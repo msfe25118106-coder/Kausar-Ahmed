@@ -1,0 +1,12 @@
+{
+  "url_template": "https://easydata.sbp.org.pk/api/v1/series/{code}/data?api_key={key}&format=json",
+  "_note": "UNVERIFIED: confirm URL format in SBP's EasyData API docs, then edit. Replace each CODE with a real series code from EasyData.",
+  "history_days": 730,
+  "series": [
+    {"id": "policy_rate", "label": "Policy rate", "code": "REPLACE_CODE", "unit": "%", "group": "Rates"},
+    {"id": "kibor_6m",    "label": "6M KIBOR",    "code": "REPLACE_CODE", "unit": "%", "group": "Rates"},
+    {"id": "usdpkr",      "label": "USD/PKR",     "code": "REPLACE_CODE", "unit": "",  "group": "FX"},
+    {"id": "reserves",    "label": "SBP reserves","code": "REPLACE_CODE", "unit": "USD mn", "group": "External"},
+    {"id": "cpi_yoy",     "label": "CPI y/y",     "code": "REPLACE_CODE", "unit": "%", "group": "Prices"}
+  ]
+}

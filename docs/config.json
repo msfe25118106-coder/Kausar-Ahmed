@@ -1,0 +1,25 @@
+{
+  "country": "PAK",
+  "_note": "Shared by the browser dashboard (live fetch) and collector/collect.py (snapshot fallback). All sources are free and need no API key.",
+  "worldbank": [
+    {"id": "gdp_growth",   "code": "NY.GDP.MKTP.KD.ZG",  "label": "Real GDP growth",          "unit": "%",       "group": "Growth",   "imf": "NGDP_RPCH"},
+    {"id": "inflation",    "code": "FP.CPI.TOTL.ZG",     "label": "CPI inflation",            "unit": "%",       "group": "Prices",   "imf": "PCPIPCH"},
+    {"id": "ca_gdp",       "code": "BN.CAB.XOKA.GD.ZS",  "label": "Current account balance",  "unit": "% of GDP","group": "External", "imf": "BCA_NGDPD"},
+    {"id": "unemployment", "code": "SL.UEM.TOTL.ZS",     "label": "Unemployment",             "unit": "%",       "group": "Growth",   "imf": "LUR"},
+    {"id": "gdp_usd",      "code": "NY.GDP.MKTP.CD",     "label": "GDP (current US$)",        "unit": "US$ bn",  "group": "Growth",   "scale": 1e9},
+    {"id": "gdp_pc",       "code": "NY.GDP.PCAP.CD",     "label": "GDP per capita",           "unit": "US$",     "group": "Growth"},
+    {"id": "reserves",     "code": "FI.RES.TOTL.CD",     "label": "Total reserves (incl. gold)","unit": "US$ bn","group": "External", "scale": 1e9},
+    {"id": "remittances",  "code": "BX.TRF.PWKR.CD.DT",  "label": "Remittances received",     "unit": "US$ bn",  "group": "External", "scale": 1e9},
+    {"id": "exports",      "code": "NE.EXP.GNFS.CD",     "label": "Exports of goods & services","unit": "US$ bn","group": "Trade",    "scale": 1e9},
+    {"id": "imports",      "code": "NE.IMP.GNFS.CD",     "label": "Imports of goods & services","unit": "US$ bn","group": "Trade",    "scale": 1e9},
+    {"id": "fdi",          "code": "BX.KLT.DINV.CD.WD",  "label": "FDI net inflows",          "unit": "US$ bn",  "group": "External", "scale": 1e9},
+    {"id": "ext_debt",     "code": "DT.DOD.DECT.CD",     "label": "External debt stock",      "unit": "US$ bn",  "group": "External", "scale": 1e9},
+    {"id": "fx_annual",    "code": "PA.NUS.FCRF",        "label": "PKR per USD (annual avg)", "unit": "PKR",     "group": "Prices"},
+    {"id": "lending_rate", "code": "FR.INR.LEND",        "label": "Bank lending rate",        "unit": "%",       "group": "Prices"}
+  ],
+  "imf_only": [
+    {"id": "gov_debt",     "imf": "GGXWDG_NGDP",         "label": "Government debt",          "unit": "% of GDP","group": "Fiscal"},
+    {"id": "fiscal_bal",   "imf": "GGXCNL_NGDP",         "label": "Fiscal balance",           "unit": "% of GDP","group": "Fiscal"}
+  ],
+  "fx": {"base": "usd", "quote": "pkr", "history_days": 180, "step_days": 3}
+}
