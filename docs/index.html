@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pakistan Economic Dashboard</title>
+<meta name="description" content="Live Pakistan economic indicators from the World Bank, IMF and daily exchange-rate feeds.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Pakistan Economic Dashboard</h1>
+      <p class="sub">Live data from the World Bank, IMF World Economic Outlook and daily FX feeds. Fetched in your browser each time the page loads.</p>
+    </div>
+    <div class="actions">
+      <button id="refresh" type="button">Refresh</button>
+      <button id="theme" type="button" aria-label="Toggle colour theme">Theme: auto</button>
+    </div>
+  </header>
+
+  <div class="status" id="status" aria-live="polite"></div>
+
+  <section class="kpis" id="kpis" aria-label="Headline indicators"></section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>USD/PKR exchange rate</h2>
+      <span class="muted" id="fx-note"></span>
+    </div>
+    <div class="chart" id="fx-chart" style="--h:240px"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2>Explore an indicator</h2>
+      <div class="filters">
+        <label class="sr" for="pick">Indicator</label>
+        <select id="pick"></select>
+        <div class="seg" role="group" aria-label="Time range">
+          <button type="button" data-range="10">10Y</button>
+          <button type="button" data-range="20" class="on">20Y</button>
+          <button type="button" data-range="all">All</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="proj" checked> IMF projections</label>
+      </div>
+    </div>
+    <p class="muted" id="pick-desc"></p>
+    <div class="legend" id="pick-legend"></div>
+    <div class="chart" id="pick-chart" style="--h:320px"></div>
+    <div class="row-actions">
+      <button type="button" id="tbl-toggle">Show table</button>
+      <button type="button" id="csv">Download CSV</button>
+    </div>
+    <div id="tbl" hidden></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><h2>Trade: exports vs imports</h2><span class="muted">Goods &amp; services, US$ bn, World Bank</span></div>
+    <div class="legend" id="trade-legend"></div>
+    <div class="chart" id="trade-chart" style="--h:280px"></div>
+  </section>
+
+  <section id="sbp" hidden>
+    <h2 class="sec">SBP high-frequency series</h2>
+    <p class="muted">From SBP EasyData via the scheduled collector (needs an API key, see README).</p>
+    <div class="grid" id="sbp-grid"></div>
+  </section>
+
+  <h2 class="sec">All indicators</h2>
+  <p class="muted">Click any panel to open it in the explorer above.</p>
+  <div class="grid" id="grid"></div>
+
+  <footer class="foot">
+    Sources: <a href="https://data.worldbank.org/country/pakistan" target="_blank" rel="noopener">World Bank WDI</a> ·
+    <a href="https://www.imf.org/external/datamapper/profile/PAK" target="_blank" rel="noopener">IMF DataMapper (WEO)</a> ·
+    <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">ExchangeRate-API</a> ·
+    <a href="https://github.com/fawazahmed0/exchange-api" target="_blank" rel="noopener">fawazahmed0 currency API</a>.
+    World Bank and IMF data are annual; IMF values for the current year onward are projections.
+    If a live source can't be reached, the last snapshot saved by the scheduled collector is shown instead.
+  </footer>
+</div>
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

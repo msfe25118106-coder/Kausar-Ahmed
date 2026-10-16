@@ -1,0 +1,21 @@
+name: Update dashboard data
+on:
+  schedule: [{cron: "17 */6 * * *"}]   # every 6 hours (UTC): refreshes the fallback snapshot
+  workflow_dispatch: {}
+permissions: {contents: write}
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Collect snapshot
+        env: {EASYDATA_API_KEY: "${{ secrets.EASYDATA_API_KEY }}"}   # optional, only for SBP series
+        run: python collector/collect.py
+        continue-on-error: true   # still publish partial data; failures show on the dashboard
+      - name: Commit data
+        run: |
+          git config user.name "dashboard-bot"; git config user.email "bot@users.noreply.github.com"
+          git add docs/data.json
+          git diff --cached --quiet || (git commit -m "Update data" && git push)
